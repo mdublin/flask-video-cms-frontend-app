@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Video Asset Viewer{% endblock %}
+
+{% block page_content %}
+    <h1>Home page</h1>
+    <p>Enter a tag to search:</p>
+    <p>This page can be viewed by all users.</p>
+    <p>You are {% if not current_user.is_authenticated %}not {% endif %}logged in.</p>
+    <iframe width="720" height="405" src="http://www.ustream.tv/embed/17074538?html5ui=1" allowfullscreen="true" webkitallowfullscreen="true" scrolling="no" frameborder="0" style="border: 0px none transparent;">    </iframe>
+    <br /><a href="http://www.ustream.tv" style="font-size: 12px; line-height: 20px; font-weight: normal; text-align: left;" target="_blank">Broadcast live streaming video on Ustream</a>
+
+{% endblock %}

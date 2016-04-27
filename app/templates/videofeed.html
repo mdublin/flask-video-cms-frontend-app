@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+<!-- http://codepen.io/ncerminara/pen/zbKAD/ --!>
+{% block title %}Video Feed{% endblock %}
+
+{% block page_content %}
+    <h1>Video Feed</h1>
+    <p>This page can only be viewed by logged in users.</p>
+    <p>You are logged in as <b>{{ current_user.username }}</b>.</p>
+    <!--here we will loop through video feed returned after user-submitted tag interpolation with OVP API feed has been processed by video feed processing logic elsewhere in app --!>
+       <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="https://player.vimeo.com/video/147434296" width="640" height="468" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+       </div>
+
+
+
+{% endblock %}
