@@ -1,4 +1,4 @@
-#!/Users/mdublin/Downloads/newapp/env/bin/python
+#!/Users/mdublin/Downloads/flask-video-cms-frontend-app/env/bin/python
 
 import sys
 import getopt
