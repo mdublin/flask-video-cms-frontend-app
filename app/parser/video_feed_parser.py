@@ -16,9 +16,12 @@ def load(user_tag):
 
     response_array = []
 
+    # list returned of dicts for each video, this will be sent to, and iterated through, videofeed.html endpoint with jinja2 control structures
+    asset_return_list = []
+    
     # -- For each item in the feed
     for index, post in enumerate(d.entries):
-        if index >= 1:
+        if index >= 3:
             break
         # Here we set up a dictionary in order to extract selected data from the
         # original brightcove "post" result
@@ -70,38 +73,40 @@ def load(user_tag):
         videoDescription = item['description']
 
 
-        print(response_array)
-        print(type(response_array))
+        #print(response_array)
+        #print(type(response_array))
 
-        asset_dict = response_array[0]
-        extract_from_tup = asset_dict['videoID']
+
         
-        return extract_from_tup[0]
+        '''asset_dict = response_array[0]
+        print("THIS IS ASSET_DICT")
+        print(asset_dict)
+        
+        extract_videoID_tupe = asset_dict['videoID']
+        extract_name_tupe = asset_dict['name']
+        extract_description_tupe = asset_dict['description']
+        
+        # all the values are at index 0 of each tuple, tuples are the values for each key in dictionary contained in the response_array list 
+        video_package = {}
+        video_package.update({'videoID': extract_videoID_tupe, 'name': extract_name_tupe, 'description': extract_description_tupe})
+        print("printing video_package....")
+        print(video_package)
+        asset_return_list.append(video_package)
+
+        #return extract_videoID_tupe[0]'''
+    
+    #video_package = {}
+    for asset_dict in response_array:
+        video_package = {}
+        print("THIS IS ASSET_DICT on line 100")
+        print(asset_dict)
+        extract_videoID_tupe = asset_dict['videoID'] 
+        extract_name_tupe = asset_dict['name']   
+        extract_description_tupe = asset_dict['description']
+        video_package.update({'videoID': extract_videoID_tupe[0], 'name': extract_name_tupe[0], 'description': extract_description_tupe[0]})
+        asset_return_list.append(video_package)
+
+    print(asset_return_list)
+    return asset_return_list
 
 
-        '''if videoExists(videoID):
-            print "This video has already been uploaded to Facebook."
-            print videoID
-            print videoNameConverted
-
-        if not videoExists(videoID):
-            print "Haven't seen", videoNameConverted and videoID, "before, adding it to Facebook!"
-            access = '<Facebook permanent access token>'
-
-            fburl = 'https://graph-video.facebook.com/v2.3/<page id>/videos?access_token=' + \
-                str(access)
-            # In the payload we're using title instead of name, so that the
-            # actual video title is posted to the timeline (name wasn't
-            # working, so the description was posted instead)
-            payload = {
-                'name': '%s' % (videoNameConverted),
-                'description': '%s' % (videoDescription),
-                'file_url': '%s' % (videoUrl)}
-            flag = requests.post(fburl, data=payload).text
-            print flag
-            fb_res = json.loads(flag)
-            print fb_res
-            if not "error" in fb_res:
-                addVideo(videoID, videoNameConverted)
-            else:
-                print "An error occured uploading to facebook for ", videoNameConverted'''

@@ -70,11 +70,16 @@ def protected():
         user_tag = tagform.tag.data
 
         #call to feed parser 
-        video_id = video_feed_parser.load(user_tag)
-        print(video_id)
+        #video_id = video_feed_parser.load(user_tag)
+        video_package = video_feed_parser.load(user_tag)
+        print(video_package)
        
        #this is rendering the videofeed.html template but still at the /protected URL. Can send POST data (the user submitted tag) via redirect to /videofeed endpoint? 
-        return render_template('videofeed.html', video_id=video_id)
+        #return render_template('videofeed.html', video_id=video_id)
+        
+
+        return render_template('videofeed.html', video_package=video_package)
+        
         #return redirect(url_for('main.videofeed', video_id=video_id))
         #return redirect(url_for('main.videofeed', video_id=video_id))
     

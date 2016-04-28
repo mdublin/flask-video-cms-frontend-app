@@ -11,6 +11,8 @@
  
     <!--here we will loop through video feed returned after user-submitted tag interpolation with OVP API feed has been processed by video feed processing logic elsewhere in app --!>
  
+ {% for dict in video_package %}
+    
 
        <div class="embed-responsive embed-responsive-16by9">
  
@@ -35,7 +37,7 @@
     <param name="isVid" value="true" />
     <param name="isUI" value="true" />
     <param name="dynamicStreaming" value="true" />
-    <param name="@videoPlayer" value="{{ video_id }}" />
+    <param name="@videoPlayer" value="{{ dict["videoID"] }}" />
     
 </object>
 
@@ -52,5 +54,7 @@
        </div>
 
 
+
+{% endfor %}
 
 {% endblock %}
