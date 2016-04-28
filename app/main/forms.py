@@ -11,8 +11,18 @@ class LoginForm(Form):
 
 
 #tag submission form class
+# for Brightcove:
+#    no tag > 128 characters
+#    A video can have no more than a total of 1200 tags
+#    Only the first 100 tags are cached and will be the only ones that are available via type ahead
+#rules:
+#    multiple words separated by a space (converted to %20 as per RFC 1738) will be considered as one tag. 
+#    words or phrases separated by commas are treated as distinct tags
+
+
+
 class TagSearchForm(Form):
-    tag = StringField('Search CMS for metatag:')
+    tag = StringField('Search CMS for metatag:', )
     submit = SubmitField('Submit')
 
 

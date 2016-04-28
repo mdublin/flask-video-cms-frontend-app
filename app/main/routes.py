@@ -10,7 +10,7 @@ from ..models import User
 # importing main, which is the blueprint object defined in the __init__.py file in this directory 
 from . import main
 from .forms import LoginForm, TagSearchForm 
-from ..parser import video_feed_parser
+from ..parser import video_feed_parser, input_cleanup
 
 
 @main.route('/login', methods=['GET', 'POST'])
@@ -71,9 +71,16 @@ def protected():
 
         #call to feed parser 
         #video_id = video_feed_parser.load(user_tag)
-        video_package = video_feed_parser.load(user_tag)
-        print(video_package)
-       
+        #video_package = video_feed_parser.load(user_tag)
+        #print(video_package)
+
+        #call to input_cleanup function before sending to parser
+        parser_input = input_cleanup.input_prep(user_tag)
+        video_package = video_feed_parser.load(parser_input)
+
+
+
+
        #this is rendering the videofeed.html template but still at the /protected URL. Can send POST data (the user submitted tag) via redirect to /videofeed endpoint? 
         #return render_template('videofeed.html', video_id=video_id)
         
