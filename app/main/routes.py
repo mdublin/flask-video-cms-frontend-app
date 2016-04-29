@@ -1,11 +1,10 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, flash
 # TK: add context variables (session, g) and user login registration,
 # login callback, load user data upon login, etc
 
 from flask.ext.login import login_required, login_user, logout_user
 
 # importing from upper directory models via .. notation
-
 from ..models import User
 
 # importing main, which is the blueprint object defined in the __init__.py
@@ -46,14 +45,18 @@ def logout():
     return redirect(url_for('main.index'))
 
 
+
+from ..models import User
 # NEED TO CONNECT TO DATABASE, UPDATE DATABASE!!!
 # registration
 @main.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User(form.username.data, form.email.data, form.password.data)
-        db_session.add(user)
+        User.register(form.username.data, form.email.data, form.password.data)
+        #user = User(form.username.data, form.email.data, form.password.data)
+        #db_session.add(user)
+        #db.add(user)
         flash('Thanks for registering')
         return redirect(url_for('main.login'))
     return render_template('register.html', form=form)

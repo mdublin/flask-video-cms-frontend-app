@@ -15,6 +15,8 @@ from flask.ext.login import LoginManager
 #becuase we do not have an app object that is a global object (instead app objects are created below in the app factory function create_app()) that we can pass to our instantiations of Flask extensions, we can create them here, unitialized becaue we are not passing anything to them. Then when you have app object you want, you complete the initialization of these extensions by calling .init_app(app)
 
 bootstrap = Bootstrap()
+#create SQLAlchemy database instance
+# http://flask-sqlalchemy.pocoo.org/2.1/api/
 db = SQLAlchemy()
 lm = LoginManager()
 lm.login_view = 'main.login'

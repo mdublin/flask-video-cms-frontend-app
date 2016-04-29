@@ -1,4 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+
+# from . import db == importing the db=SQLAlchemy() instance created in the __init__.py in this same directory
 from . import db, lm
 from flask.ext.login import UserMixin
 
@@ -7,7 +9,9 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(16), index=True, unique=True)
+    email = db.Column(db.String(64), unique=True)
     password_hash = db.Column(db.String(64))
+
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -16,8 +20,8 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     @staticmethod
-    def register(username, password):
-        user = User(username=username)
+    def register(username, email, password):
+        user = User(username=username, email=email)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
