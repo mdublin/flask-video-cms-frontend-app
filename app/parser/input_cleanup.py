@@ -24,7 +24,11 @@ def input_prep(user_tag):
     if ',' in user_tag:
         #break up the comma separated tags into a list
         tags = user_tag.split(',')
-        #check if each tag in the list has any spaces, like 'United States', and replace that space with the URL encoded version of %20
+
+        #refactoring our tags list with a list comprehension to elminate leading whitespace in front of tag words
+        tags = [word.lstrip() for word in tags]
+
+        #check if each tag element in the list has any spaces, like 'United States', and replace that space with the URL encoded version of %20
         for tag in tags:
             if ' ' in tag:
                 tag = tag.replace(" ", "%20")

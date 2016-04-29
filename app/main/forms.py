@@ -21,7 +21,7 @@ class LoginForm(Form):
 
 
 class TagSearchForm(Form):
-    tag = StringField('Search CMS for metatag:', )
+    tag = StringField('Search by tag:', )
     submit = SubmitField('Submit')
 
 
