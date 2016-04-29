@@ -19,27 +19,28 @@ def input_prep(user_tag):
     #hopefully user submitted tags properly
     #contains cleaned up tags
     tags_package = []
-    
+   
+    # checking if there are commas in user_tag (which should mean that the user has submitted multiple, comma-separated, tags
     if ',' in user_tag:
+        #break up the comma separated tags into a list
         tags = user_tag.split(',')
-        print("THIS IS tags in if")
-        print(tags)
+        #check if each tag in the list has any spaces, like 'United States', and replace that space with the URL encoded version of %20
         for tag in tags:
             if ' ' in tag:
                 tag = tag.replace(" ", "%20")
                 tags_package.append(tag)
-                print(tags_package)
             else:
                 tags_package.append(tag)
                 print(tags_package)
 
         return tags_package
 
+    #checking if single tag has spaces, like "United States"
     elif " " in user_tag:
         #format single tag with spaces for URL
         tag = user_tag.replace(" ", "%20")
         return tag
-
+    #single tag
     else:
         tag = user_tag
         return tag
