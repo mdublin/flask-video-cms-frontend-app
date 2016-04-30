@@ -42,11 +42,12 @@ def input_prep(user_tag):
     #checking if single tag has spaces, like "United States"
     elif " " in user_tag:
         #format single tag with spaces for URL
-        tag = user_tag.replace(" ", "%20")
+        tag = str(user_tag.replace(" ", "%20"))
         return tag
     #single tag
     else:
-        tag = user_tag
+        print "else"
+        tag = str(user_tag)
         return tag
 
 

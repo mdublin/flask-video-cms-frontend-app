@@ -12,6 +12,7 @@ def load(parser_input):
 
     print("THIS IS parser_input")
     print(parser_input)
+    print(type(parser_input))
 
     #checking parser_input object type
     if isinstance(parser_input, str):
