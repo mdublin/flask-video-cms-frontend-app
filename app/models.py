@@ -38,7 +38,7 @@ def load_user(id):
 # Some notes of how SQLAlchemy is working in this app, which is kind of "magical" so it warrants some explicit break:
 # because we are note, anywhere, executing models.py directly, how does this model class actuall get mapped to the SQLite database?
 
-# 1. You create a Flask-SQLAlchemy instance (the “db” variable which is created in the __init__.py file in the app package as db = SQLAlchemy()). This class looks up the configuration in your Flask app instance, and that’s how it knows where the database is.
+# 1. You create a Flask-SQLAlchemy instance (the “db” variable which is created in the __init__.py file in the app package as db = SQLAlchemy()). This class looks up the configuration in your Flask app instance, and that is how it knows where the database is.
 
 # 2. Then you import all your models, which are defined as subclasses of db.Model as here, where the class User model is inheriting from db.Model class.
 
