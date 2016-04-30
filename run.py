@@ -14,7 +14,7 @@ if __name__ == '__main__':
     #user create_app factory from __init__.py in app package to create an app instance with specified configuration
     app = create_app(config_name)
     
-    #here db is being created at runtime
+    # db is being created at runtime
     # we need to specify which app instance to use
     # context are trick Flask uses to enable context variabels such as session or request to be activate during a reuqest cycle. This is a different use for context, by getting application context from application instance, we setup that application to be the known application for this block. So when we use db inside this block, db will know which application we are using, so it will go the find db for that app and create the db just fine. If you run db outside of active application context being in place, then db will not know which application to go and not know whcih db to initialize. Again, this all goes back to not having that global app object that you typically see in simpler Flask projects because have that create_app() factory function setup in app/__init__.py
     with app.app_context():
