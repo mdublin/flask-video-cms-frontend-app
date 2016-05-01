@@ -8,7 +8,7 @@ from app.models import User
 
 #hard coded development config
 if __name__ == '__main__':
-    config_name = os.environ.get('FLASK_CONFIG') or 'development'
+    config_name = os.environ.get('FLASK_CONFIG') or 'production'
     print(' * Loading configuration "{0}"'.format(config_name))
     
     #user create_app factory from __init__.py in app package to create an app instance with specified configuration
