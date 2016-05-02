@@ -45,12 +45,12 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
 
     # configure production logging of errors
-    if not app.config['DEBUG'] and not app.config['TESTING']:
-        import logging
-        from logging.handlers import SMTPHandler
-        mail_handler = SMTPHandler('127.0.0.1', 'error@example.com',
-                                   app.config['ADMINS'], 'Application Error')
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
+    #if not app.config['DEBUG'] and not app.config['TESTING']:
+    #    import logging
+    #    from logging.handlers import SMTPHandler
+    #    mail_handler = SMTPHandler('127.0.0.1', 'error@example.com',
+    #                               app.config['ADMINS'], 'Application Error')
+    #    mail_handler.setLevel(logging.ERROR)
+    #    app.logger.addHandler(mail_handler)
 
     return app
