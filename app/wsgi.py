@@ -5,6 +5,7 @@ config_name = os.environ.get('FLASK_CONFIG') or 'production'
 
 from app import create_app
 
+#creating app instance
 application = create_app(config_name)
 
 #application = app()

@@ -18,6 +18,7 @@ bootstrap = Bootstrap()
 #create SQLAlchemy database instance
 # http://flask-sqlalchemy.pocoo.org/2.1/api/
 db = SQLAlchemy()
+
 lm = LoginManager()
 lm.login_view = 'main.login'
 
