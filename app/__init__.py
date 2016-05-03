@@ -12,21 +12,7 @@ from flask.ext.bootstrap import Bootstrap
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
-#new:
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
-#import production
-
-#SQLALCHEMY_DATABASE_URI = "postgresql://mdublin1@localhost:5432/VideoDashBoard"
-
-#engine = create_engine(SQLALCHEMY_DATABASE_URI)
-
-#Session = sessionmaker(bind=engine)
-#session = Session()
-
-#in other implementations we do this, but commenting out to stick to original db = SQLAlchemy() instance creation
 #Base = declarative_base()
 db = SQLAlchemy()
 
