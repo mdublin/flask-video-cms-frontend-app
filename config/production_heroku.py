@@ -10,6 +10,7 @@ SECRET_KEY = 'top secret!'
 #    os.path.dirname(__file__), '../data.sqlite3')
 
 #SQLALCHEMY_DATABASE_URI = "postgresql://mdublin1@localhost:5432/VideoDashBoard"
+
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
 SQLALCHEMY_DATABASE_URI = url
 

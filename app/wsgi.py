@@ -1,7 +1,10 @@
 from whitenoise import WhiteNoise
 import os
 
+#config_name = os.environ.get('FLASK_CONFIG') or 'production_heroku'
+
 config_name = os.environ.get('FLASK_CONFIG') or 'production'
+
 
 from app import create_app, db
 from app.models import User
