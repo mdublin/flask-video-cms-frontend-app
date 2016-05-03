@@ -19,4 +19,3 @@ application = create_app(config_name)
 #application = app()
 application = WhiteNoise(application, root='/path/to/static/files')
 application.add_files('/path/to/more/static/files', prefix='more-files/')
-
