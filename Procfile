@@ -1,1 +1,2 @@
-web: python run.p
+gunicorn app.wsgi:application --log-level debug
+
