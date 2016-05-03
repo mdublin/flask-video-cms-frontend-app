@@ -8,9 +8,9 @@ from flask.ext.login import UserMixin
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(16), index=True, unique=True)
-    email = db.Column(db.String(64), unique=True)
-    password_hash = db.Column(db.String(64))
+    username = db.Column(db.String(200), index=True, unique=True)
+    email = db.Column(db.String(200), unique=True)
+    password_hash = db.Column(db.String(200))
 
 
     def set_password(self, password):

@@ -9,15 +9,39 @@
 import os
 from flask import Flask
 from flask.ext.bootstrap import Bootstrap
+
 from flask.ext.sqlalchemy import SQLAlchemy
+
+#new:
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+#import production
+
+#SQLALCHEMY_DATABASE_URI = "postgresql://mdublin1@localhost:5432/VideoDashBoard"
+
+#engine = create_engine(SQLALCHEMY_DATABASE_URI)
+
+#Session = sessionmaker(bind=engine)
+#session = Session()
+
+#in other implementations we do this, but commenting out to stick to original db = SQLAlchemy() instance creation
+#Base = declarative_base()
+db = SQLAlchemy()
+
+
+#flask login manager
 from flask.ext.login import LoginManager
 
 #becuase we do not have an app object that is a global object (instead app objects are created below in the app factory function create_app()) that we can pass to our instantiations of Flask extensions, we can create them here, unitialized becaue we are not passing anything to them. Then when you have app object you want, you complete the initialization of these extensions by calling .init_app(app)
 
 bootstrap = Bootstrap()
+
 #create SQLAlchemy database instance
 # http://flask-sqlalchemy.pocoo.org/2.1/api/
-db = SQLAlchemy()
+#db = SQLAlchemy()
+
 
 lm = LoginManager()
 lm.login_view = 'main.login'
@@ -53,5 +77,6 @@ def create_app(config_name):
     #                               app.config['ADMINS'], 'Application Error')
     #    mail_handler.setLevel(logging.ERROR)
     #    app.logger.addHandler(mail_handler)
+    
 
     return app
